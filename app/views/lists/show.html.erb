@@ -1,1 +1,16 @@
-<h1>Lista [ID]</h1>
+<nav class="navbar navbar-dark bg-dark">
+  <%= link_to "Return lists", lists_path, class: "btn btn-outline-success"%>
+  <h2 class="title" style="color: white;"><%= @list_find.name %></h2>
+  <h1> </h1>
+</nav>
+
+
+<h1>Las peliculas son:</h1>
+
+
+<% @movies.each do |movie| %>
+  <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+    <div class= "card-header"><%= movie.title %></div>
+    <div class= "card-header"><%= movie.overview %></div>
+  </div>
+<% end %>

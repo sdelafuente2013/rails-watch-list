@@ -1,1 +1,11 @@
-<h1>Lista: [index]</h1>
+<nav class="navbar navbar-dark bg-dark">
+	<%= link_to "Create new list", new_list_path, class: "btn btn-outline-success"%>
+</nav>
+
+<!-- card list -->
+
+<% @lists.each do |list| %>
+	<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+	  <div class= "card-header"><%= link_to list.name, list_path(list), class: "card-header" %></div>
+	</div>
+<% end %>
