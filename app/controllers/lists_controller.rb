@@ -19,13 +19,13 @@ class ListsController < ApplicationController
 
 	def show
 		@list_find = List.find(params[:id])
-		@movies = Movie.all()
-		# @movies_find = Movie.where(: 10)
+		# @movies = Movie.all()
+		@bookmarks = Bookmark.all
+		@bookmark = Bookmark.new
 	end 
 
 	private
     def list_params
-      #              model? 
       params.require(:list).permit(:name)
     end
 end

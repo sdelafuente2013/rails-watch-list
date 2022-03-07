@@ -1,1 +1,13 @@
-<h1>New bookmark!!</h1>
+<nav class="navbar navbar-dark bg-dark">
+  <%= link_to "Return lists", lists_path, class: "btn btn-outline-success"%>
+</nav>
+
+<%= simple_form_for [@bookmark] do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.association :movie %>
+
+  <%= f.input :comment %>
+  <%= f.button :submit, class: "btn-primary" %>
+  <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+<% end %>
