@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
 	def index
 		@lists = List.all
+		@movies = Movie.all
 	end 
 
 	def new
@@ -19,9 +20,10 @@ class ListsController < ApplicationController
 
 	def show
 		@list_find = List.find(params[:id])
-		# @movies = Movie.all()
 		@bookmarks = Bookmark.all
 		@bookmark = Bookmark.new
+		@reviews = Review.all
+		@review = Review.new
 	end 
 
 	private
