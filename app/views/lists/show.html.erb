@@ -1,54 +1,64 @@
-<nav class="navbar navbar-dark bg-dark">
+<!-- Navbar -->
+<nav class="navbar nav-list">
+  <%= image_tag 'cine.png' %>
+  <h2 class="title-show"><%= @list_find.name.capitalize() %></h2>
   <%= link_to "Return lists", lists_path, class: "btn btn-outline-success"%>
-  <h2 class="title" style="color: white;"><%= @list_find.name %></h2>
-  <%# link_to "Add new movie", new_bookmark_path, class: "btn btn-outline-success"%>
-  <h1></h1>
 </nav>
 
-<!-- Ver todas las card de peliculas con titulo, descripcion, img, comentarios, etc -->
-<% @bookmarks.each do |bookmark| %>
-  <% if bookmark.list.name == @list_find.name %>
-    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-      <div class= "card-header"><%= bookmark.movie.title %></div>
-      <div class= "card-header"><%= bookmark.movie.overview %></div>
-      <div class= "card-header"><%= bookmark.comment %></div>
-    </div>    
+<!-- Card Movies -->
+<div class="container card-movies">
+  <% @bookmarks.each do |bookmark| %>
+    <% if bookmark.list.name == @list_find.name %>
+      <div class="card-movie">
+        <h2 class= "title-card-movie"><%= bookmark.movie.title %></h2>
+        <div class= "overview-card-movie"><%= bookmark.movie.overview %></div>
+        <%= image_tag bookmark.movie.poster_url %>
+        <!--      <div class= "card-header"><%#= bookmark.comment %></div>-->
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+
+
+
+
 
 <!-- Ver todas las reviews-->
-<% @reviews.each do |review| %>
-    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-      <div class= "card-header"><%= review.rating %></div>
-      <div class= "card-header"><%= review.content %></div>
-    </div>    
-<% end %>
+<!--<div class="container">-->
+    <%# @reviews.each do |review| %>
 
+    <%# end %>
+<!--</div>-->
+<!--<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">-->
+<!--  <div class= "card-header"><%#= review.rating %></div>-->
+<!--</div>-->
+<!--<div class= "card-header"><%#= review.content %></div>-->
 
 <!-- Añadir una pelicula mediante un bookmark a una lista -->
-<%= simple_form_for @bookmark do |f| %>
-  <%= f.error_notification %>
-  
-  <%= f.association :movie %>
+<%#= simple_form_for @bookmark do |f| %>
+  <%#= f.error_notification %>
 
-  <%= f.input :comment %>
-  <%= f.button :submit, class: "btn-primary" %>
-  <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
-<% end %>
+  <%#= f.association :movie %>
+
+  <%#= f.input :comment %>
+  <%#= f.button :submit, class: "btn-primary" %>
+  <%#= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+<%# end %>
 
 
 
 <!-- Añadir una review a la lista -->
-<%= simple_form_for @review do |f| %>
-  <%= f.error_notification %>
+<%#= simple_form_for @review do |f| %>
+  <%#= f.error_notification %>
   
   <%# f.association :movie %>
 
-  <%= f.input :rating %>
-  <%= f.input :content %>
+  <%#= f.input :rating %>
+  <%#= f.input :content %>
 
-  <%= f.button :submit, class: "btn-primary" %>
-  <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
-<% end %>
+  <%#= f.button :submit, class: "btn-primary" %>
+  <%#= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+<%# end %>
 
 

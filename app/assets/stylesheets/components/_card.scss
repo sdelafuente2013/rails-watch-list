@@ -1,18 +1,55 @@
-.card{
-	width: 17rem; 
-	height: 380px;
+.card-genders{
+	background-color: white;
+	width: 15rem;
+	height: 220px;
 	margin-top: 15px;
 	border-radius: 10px;
+	opacity: 0.5;
+	transition: opacity .5s;
+	padding: 0 10px;
 
-	.card-img-top{
-		height: 210px;
+	&:hover{
+		opacity: 1;
 	}
-	h2{
+
+	.title-card-genders{
 		text-align: center;
+	}
+
+	.img-card-genders{
+		height: 220px;
 	}
 }
 
 
 
+.card-movie{
+	background-color: white;
+	width: 19rem;
+	height: 565px;
+	margin: 10px;
+	opacity: 0.5;
+	transition: opacity .5s;
+
+	&:hover{
+		opacity: 1;
+	}
 
 
+	.title-card-movie{
+		text-align: center;
+		//border: solid blue 1px;
+		height: 13%;
+	}
+
+	.overview-card-movie{
+		color: #0D6EFD;
+		//border: solid red 1px;
+		height: 17%;
+	}
+	img{
+		//border: solid green 1px;
+		height: 70%;
+		width: 100%;
+	}
+}
