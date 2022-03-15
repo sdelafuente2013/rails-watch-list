@@ -1,15 +1,19 @@
-<nav class="navbar navbar-dark bg-dark">
+<!-- Navbar -->
+<nav class="navbar nav-list">
+  <%= image_tag 'cine.png' %>
   <%= link_to "Return lists", lists_path, class: "btn btn-outline-success"%>
 </nav>
 
 <!-- Create list with Simple form + bootstrap-->
+<div class="container-form">
+  <%= simple_form_for @list_new, html: { class: "form-add-movie"} do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name %>
+    <%= f.button :submit, class: "btn-primary" %>
+    <%#= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+  <% end %>
+</div>
 
-<%= simple_form_for @list_new do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :name %>
-  <%= f.button :submit, class: "btn-primary" %>
-  <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+<% if notice %>
+  <p class="alert"><%= notice %></p>
 <% end %>
-
-
-

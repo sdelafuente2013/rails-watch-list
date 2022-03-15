@@ -13,52 +13,50 @@
         <h2 class= "title-card-movie"><%= bookmark.movie.title %></h2>
         <div class= "overview-card-movie"><%= bookmark.movie.overview %></div>
         <%= image_tag bookmark.movie.poster_url %>
-        <!--      <div class= "card-header"><%#= bookmark.comment %></div>-->
+        <em>"<%= bookmark.comment %>"</em>
       </div>
     <% end %>
   <% end %>
 </div>
 
+<!-- Card reviews-->
+<div class="container card-reviews">
+    <% @reviews.each do |review| %>
+      <% if review.list == @list_find %>
+          <div class="card-review">
+            <em>"<%= review.content %>"</em>
+            <% estrella = image_tag "estrella.png" %>
+            <%= estrella * review.rating%>
+          </div>
+      <% end %>
+    <% end %>
+</div>
+
+<div class="container-form">
+  <!-- Add movie mediante bookmark to list-->
+  <%= simple_form_for @bookmark, html: { class: "form-add-movie"} do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.association :movie %>
+
+    <%= f.input :comment %>
+    <%= f.button :submit, class: "btn-primary" %>
+    <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+  <% end %>
 
 
+  <!-- Add review to list-->
+  <%= simple_form_for @review, html: { class: "form-add-review"}  do |f| %>
+    <%= f.error_notification %>
 
+    <%= f.input :rating %>
+    <%= f.input :content %>
 
+    <%= f.button :submit, class: "btn-primary" %>
+    <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+  <% end %>
+</div>
 
-<!-- Ver todas las reviews-->
-<!--<div class="container">-->
-    <%# @reviews.each do |review| %>
-
-    <%# end %>
-<!--</div>-->
-<!--<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">-->
-<!--  <div class= "card-header"><%#= review.rating %></div>-->
-<!--</div>-->
-<!--<div class= "card-header"><%#= review.content %></div>-->
-
-<!-- Añadir una pelicula mediante un bookmark a una lista -->
-<%#= simple_form_for @bookmark do |f| %>
-  <%#= f.error_notification %>
-
-  <%#= f.association :movie %>
-
-  <%#= f.input :comment %>
-  <%#= f.button :submit, class: "btn-primary" %>
-  <%#= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
-<%# end %>
-
-
-
-<!-- Añadir una review a la lista -->
-<%#= simple_form_for @review do |f| %>
-  <%#= f.error_notification %>
-  
-  <%# f.association :movie %>
-
-  <%#= f.input :rating %>
-  <%#= f.input :content %>
-
-  <%#= f.button :submit, class: "btn-primary" %>
-  <%#= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
-<%# end %>
-
-
+<% if notice %>
+  <p class="alert"><%= notice %></p>
+<% end %>

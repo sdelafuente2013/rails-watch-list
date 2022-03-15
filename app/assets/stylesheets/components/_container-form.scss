@@ -1,0 +1,13 @@
+.container-form{
+  display: flex;
+  justify-content: space-between;
+
+  .form-add-movie, .form-add-review {
+    width: 29%;
+    color: white;
+    margin: 30px 48px;
+    padding: 16px;
+    background-color: rgba(30,56,67,0.44);
+    border-radius: 15px;
+  }
+}
